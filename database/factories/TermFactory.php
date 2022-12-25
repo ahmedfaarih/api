@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Port>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Term>
  */
-class PortFactory extends Factory
+class TermFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class PortFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'content' => fake()->name()
         ];
     }
 }

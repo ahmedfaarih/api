@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AfRequests;
+use App\Models\Afrequest;
 use Illuminate\Http\Request;
-
-class AfRequestsController extends Controller
+use Spatie\QueryBuilder\QueryBuilder;
+class AfrequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,11 @@ class AfRequestsController extends Controller
      */
     public function index()
     {
-        //
+         $afRequests = QueryBuilder::for(Afrequest::class)
+        ->with('consignment', 'port','shipment', 'term')
+        ->simplePaginate(15);
+         
+        return $afRequests;
     }
 
     /**
@@ -41,10 +45,10 @@ class AfRequestsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AfRequests  $afRequests
+     * @param  \App\Models\Afrequest  $afrequest
      * @return \Illuminate\Http\Response
      */
-    public function show(AfRequests $afRequests)
+    public function show(Afrequest $afrequest)
     {
         //
     }
@@ -52,10 +56,10 @@ class AfRequestsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AfRequests  $afRequests
+     * @param  \App\Models\Afrequest  $afrequest
      * @return \Illuminate\Http\Response
      */
-    public function edit(AfRequests $afRequests)
+    public function edit(Afrequest $afrequest)
     {
         //
     }
@@ -64,10 +68,10 @@ class AfRequestsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AfRequests  $afRequests
+     * @param  \App\Models\Afrequest  $afrequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AfRequests $afRequests)
+    public function update(Request $request, Afrequest $afrequest)
     {
         //
     }
@@ -75,10 +79,10 @@ class AfRequestsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AfRequests  $afRequests
+     * @param  \App\Models\Afrequest  $afrequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AfRequests $afRequests)
+    public function destroy(Afrequest $afrequest)
     {
         //
     }

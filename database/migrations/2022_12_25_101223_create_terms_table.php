@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('af_requests', function (Blueprint $table) {
+        Schema::create('terms', function (Blueprint $table) {
             $table->id();
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('af_requests');
+        Schema::dropIfExists('terms');
     }
 };

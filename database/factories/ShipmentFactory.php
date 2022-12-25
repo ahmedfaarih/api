@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Port>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shipment>
  */
-class PortFactory extends Factory
+class ShipmentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +18,7 @@ class PortFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'content' => $this->faker->paragraphs(1, true)
         ];
     }
 }

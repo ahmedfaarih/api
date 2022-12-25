@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Afrequest;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Port;
 
-class PortSeeder extends Seeder
+class AfrequestSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class PortSeeder extends Seeder
      */
     public function run()
     {
-        Port::factory()
+        Afrequest::factory()
         ->count(10)
         ->create();
     }
