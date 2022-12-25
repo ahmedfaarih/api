@@ -21,4 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::controller(AfrequestController::class)->group(function (){
     Route::get('afRequests', 'index');
+    Route::get('afRequests/{id}', 'show');
+    Route::post('afRequests', 'store');
+    Route::put('afRequests/{afRequests}', 'update');
 });

@@ -12,6 +12,6 @@ class Consignment extends Model
 
     public function Afrequest()
     {
-        return $this->hasOne(Afrequest::class);
+        return $this->hasMany(Afrequest::class);
     }
 }

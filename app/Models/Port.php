@@ -13,6 +13,6 @@ class Port extends Model
 
     public function Afrequest()
     {
-        return $this->belongsTo(Afrequest::class);
+        return $this->hasMany(Afrequest::class);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Afrequest extends Model
 {
@@ -13,22 +14,22 @@ class Afrequest extends Model
 
     public function consignment()
     {
-        return $this->belongsTo(Consignment::class);
+        return $this->belongsTo(Consignment::class, 'consignee_id');
     }
 
     public function port()
     {
-        return $this->belongsTo(Port::class);
+        return $this->belongsTo(Port::class, 'port_id_dc');
     }
 
     public function shipment()
     {
-        return $this->belongsTo(Shipment::class);
+        return $this->belongsTo(Shipment::class, 'shipper_id');
     }
 
     public function Term()
     {
-        return $this->belongsTo(Term::class);
+        return $this->BelongsTo(Term::class, 'terms_id');
     }
 
     

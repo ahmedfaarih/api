@@ -30,7 +30,6 @@ class AfrequestFactory extends Factory
             'terms_id' => $this->faker->randomElement(Term::pluck('id')),
             'shipper_id' => $this->faker->randomElement(Shipment::pluck('id')),
             'consignee_id' => $this->faker->randomElement(Consignment::pluck('id'))
-            
         ];
     }
 }

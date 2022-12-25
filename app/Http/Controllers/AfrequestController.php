@@ -16,7 +16,7 @@ class AfrequestController extends Controller
     {
          $afRequests = QueryBuilder::for(Afrequest::class)
         ->with('consignment', 'port','shipment', 'term')
-        ->simplePaginate(15);
+        ->simplePaginate(10);
          
         return $afRequests;
     }
@@ -48,9 +48,11 @@ class AfrequestController extends Controller
      * @param  \App\Models\Afrequest  $afrequest
      * @return \Illuminate\Http\Response
      */
-    public function show(Afrequest $afrequest)
+    public function show($id)
     {
-        //
+        $afrequest = Afrequest::findorfail($id);
+        $afrequest->load('consignment', 'port','shipment', 'term');
+        return $afrequest;
     }
 
     /**
@@ -61,7 +63,7 @@ class AfrequestController extends Controller
      */
     public function edit(Afrequest $afrequest)
     {
-        //
+       
     }
 
     /**
