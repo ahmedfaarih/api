@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AfrequestRequest;
 use App\Models\Afrequest;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -37,9 +38,10 @@ class AfrequestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AfrequestRequest $request)
     {
-        //
+        $validatedData= $request->validated();
+        return Afrequest::create($validatedData);
     }
 
     /**
@@ -73,9 +75,11 @@ class AfrequestController extends Controller
      * @param  \App\Models\Afrequest  $afrequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Afrequest $afrequest)
+    public function update(AfrequestRequest $request, $id)
     {
-        //
+        $afrequest = Afrequest::findorfail($id);
+        $afrequest->update($request->all());
+        return $afrequest;
     }
 
     /**
@@ -84,8 +88,11 @@ class AfrequestController extends Controller
      * @param  \App\Models\Afrequest  $afrequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Afrequest $afrequest)
+    public function destroy($id)
     {
-        //
+        $afrequest= Afrequest::findorfail($id);
+        $afrequest->delete();
+
+        return response(null, 204);
     }
 }

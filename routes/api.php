@@ -23,5 +23,9 @@ Route::controller(AfrequestController::class)->group(function (){
     Route::get('afRequests', 'index');
     Route::get('afRequests/{id}', 'show');
     Route::post('afRequests', 'store');
-    Route::put('afRequests/{afRequests}', 'update');
+    Route::patch('afRequests/{id}', 'update');
+    Route::delete('afRequests/{id}', 'delete');
 });
+
+
+
