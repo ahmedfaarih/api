@@ -10,7 +10,7 @@ class Consignment extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function Afrequest()
+    public function afRequest()
     {
         return $this->hasMany(Afrequest::class);
     }
