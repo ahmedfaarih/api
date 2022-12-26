@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\AfrequestController;
+use App\Http\Controllers\ConsignmentController;
+use App\Http\Controllers\PortController;
+use App\Http\Controllers\ShipmentController;
+use App\Http\Controllers\TermController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('consignments',ConsignmentController::class);
+Route::apiResource('ports',PortController::class);
+Route::apiResource('shipments',ShipmentController::class);
+Route::apiResource('terms',TermController::class);
 
 Route::controller(AfrequestController::class)->group(function (){
     Route::get('afRequests', 'index');
