@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AfrequestController;
 use App\Http\Controllers\ConsignmentController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\PortController;
+use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\TermController;
 use Illuminate\Http\Request;
@@ -27,6 +29,8 @@ Route::apiResource('consignments',ConsignmentController::class);
 Route::apiResource('ports',PortController::class);
 Route::apiResource('shipments',ShipmentController::class);
 Route::apiResource('terms',TermController::class);
+Route::apiResource('jobs',JobController::class);
+Route::apiResource('quotations',QuotationController::class);
 
 Route::controller(AfrequestController::class)->group(function (){
     Route::get('afRequests', 'index');

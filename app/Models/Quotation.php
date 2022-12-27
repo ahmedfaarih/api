@@ -12,7 +12,7 @@ class Quotation extends Model
 
     public function afRequests()
     {
-        return $this->belongsTo(Afrequest::class);
+        return $this->belongsTo(Afrequest::class, 'af_request_id');
     }
 
     public function jobs()
