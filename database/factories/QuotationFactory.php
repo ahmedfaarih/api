@@ -24,10 +24,8 @@ class QuotationFactory extends Factory
         
         return [
             'af_request_id' => $this->faker->randomElement(Afrequest::pluck('id')),
-            'job_id' => $this->faker->randomElement(Job::pluck('id')),
             'status'=> $this->faker->name(),
             'user_id' =>  $this->faker->randomElement(User::pluck('id')),
-            'consignee_id'  => $this->faker->randomElement(Consignment::pluck('id')),
             'quotation_number'=>$this->faker->numberBetween(1,100),
             'sub_total' =>$this->faker->numberBetween(1,100),
             'discount_rate' => $this->faker->numberBetween(1,100),

@@ -17,6 +17,8 @@ class Quotation extends Model
 
     public function jobs()
     {
-        return $this->hasMany(Job::class);
+        return $this->belongsToMany(Job::class,'quotation_jobs', 'quotation_id','job_id' )->withTimestamps();; 
+        // return $this->belongsToMany(Quotation::class, 'quotation_jobs','job_id','quotation_id');
+
     }
 }

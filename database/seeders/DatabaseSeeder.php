@@ -21,8 +21,10 @@ class DatabaseSeeder extends Seeder
             ShipmentSeeder::class,
             TermSeeder::class,
             AfrequestSeeder::class,
-            JobSeeder::class,
             QuotationSeeder::class,
+            JobSeeder::class,
+            QuotationJobSeeder::class,
+            SubJobSeeder::class,
         ]);
     }
 }
