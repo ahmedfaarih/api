@@ -17,6 +17,7 @@ class AfrequestController extends Controller
     {
          $afRequests = QueryBuilder::for(Afrequest::class)
         ->with('consignment', 'port','shipment', 'term')
+        ->allowedFilters(['commodity', 'remarks', 'consignment.name','port.name','shipment.name','term.content'])
         ->simplePaginate(10);
          
         return $afRequests;

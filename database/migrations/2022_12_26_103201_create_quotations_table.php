@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('status');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('consignee_id');
+            $table->unsignedBigInteger('consignee_id');
             $table->foreign('consignee_id')->references('id')->on('consignments');
             $table->string('quotation_number');
             $table->float('sub_total');

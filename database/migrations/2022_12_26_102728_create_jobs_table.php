@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('status');
             $table->string('priority');
+            $table->float('price');
             $table->timestamps();
         });
     }
