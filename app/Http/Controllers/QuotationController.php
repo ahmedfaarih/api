@@ -51,8 +51,23 @@ class QuotationController extends Controller
         $quotation->jobs()->attach($jobId);
         $quotation->sub_total+=$job->price;
         $quotation->save();
-        
+        $quotation->calculateNetTotal($quotation);
     }
+
+    // public function detachJob($jobId,Request $request){
+
+    //     $quotation = Quotation::findOrFail($request->quotation_id);
+    //     $job = JOb::findOrFail($jobId);
+
+    //     // return   $quotation->calculateNetTotal($job,$quotation);
+
+    //     // $job=Job::findorFail($jobId);
+    //     // $quotation->jobs()->detach($jobId);
+    //     // $quotation->sub_total-=$job->price;
+    //     // $quotation->save();
+        
+    // }
+
 
     
 }

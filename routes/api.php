@@ -43,7 +43,8 @@ Route::controller(QuotationController::class)->group(function (){
     Route::get('quotations', 'index');
     Route::get('quotations/{id}', 'show');
     Route::post('quotations', 'store');
-    Route::patch('quotations/{jobId}', 'attachJob');
+    Route::patch('quotations/attach/{jobId}', 'attachJob');
+    // Route::patch('quotations/detach/{jobId}', 'detachJob');
 
     // Route::patch('afRequests/{id}', 'update');
     // Route::delete('afRequests/{id}', 'delete');

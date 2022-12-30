@@ -16,7 +16,7 @@ class AfrequestController extends Controller
     public function index()
     {
          $afRequests = QueryBuilder::for(Afrequest::class)
-        ->with('consignment', 'port','shipment', 'term')
+        ->with('consignment','portOfDischarge', 'portOfLanding','shipment', 'term')
         ->allowedFilters(['commodity', 'remarks', 'consignment.name','port.name','shipment.name','term.content'])
         ->simplePaginate(10);
          
@@ -54,7 +54,7 @@ class AfrequestController extends Controller
     public function show($id)
     {
         $afrequest = Afrequest::findorfail($id);
-        $afrequest->load('consignment', 'port','shipment', 'term');
+        $afrequest->load('portOfDischarge', 'portOfLanding','consignment', 'shipment', 'term');
         return $afrequest;
     }
 
