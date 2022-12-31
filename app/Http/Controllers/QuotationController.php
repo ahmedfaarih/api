@@ -44,6 +44,28 @@ class QuotationController extends Controller
         return $quotation;
     }
 
+    public function delete($id)
+    {   
+        $quote= Quotation::findorfail($id);
+        $quote->delete();
+
+        return response(null, 204);
+    }
+
+    public function update($id, Request $request )
+    {   
+        $request->validate([
+            "af_request_id" => 'required',
+            "user_id" => 'required',
+            "quotation_number" => 'required',
+            "discount_rate" => 'required',
+            "gst" => 'required',
+        ]);
+        $quotation= Quotation::findOrFail($id);
+        $quotation->update($request->all());
+        return $quotation;
+    }
+
     public function attachJob($jobId,Request $request){
 
         $quotation = Quotation::findOrFail($request->quotation_id);
@@ -51,22 +73,19 @@ class QuotationController extends Controller
         $quotation->jobs()->attach($jobId);
         $quotation->sub_total+=$job->price;
         $quotation->save();
+        $quotation->refresh();
         $quotation->calculateNetTotal($quotation);
     }
 
-    // public function detachJob($jobId,Request $request){
-
-    //     $quotation = Quotation::findOrFail($request->quotation_id);
-    //     $job = JOb::findOrFail($jobId);
-
-    //     // return   $quotation->calculateNetTotal($job,$quotation);
-
-    //     // $job=Job::findorFail($jobId);
-    //     // $quotation->jobs()->detach($jobId);
-    //     // $quotation->sub_total-=$job->price;
-    //     // $quotation->save();
-        
-    // }
+    public function detachJob($jobId,Request $request){
+        $quotation = Quotation::findOrFail($request->quotation_id);
+        $job = JOb::findOrFail($jobId);
+        $quotation->jobs()->detach($jobId);
+        $quotation->sub_total-=$job->price;
+        $quotation->save();
+        $quotation->refresh();
+        $quotation->calculateNetTotal($quotation);
+    }
 
 
     

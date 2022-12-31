@@ -39,15 +39,18 @@ Route::controller(AfrequestController::class)->group(function (){
     Route::patch('afRequests/{id}', 'update');
     Route::delete('afRequests/{id}', 'delete');
 });
+
 Route::controller(QuotationController::class)->group(function (){
     Route::get('quotations', 'index');
     Route::get('quotations/{id}', 'show');
     Route::post('quotations', 'store');
-    Route::patch('quotations/attach/{jobId}', 'attachJob');
-    // Route::patch('quotations/detach/{jobId}', 'detachJob');
+    Route::patch('quotations/{id}', 'update');
+    Route::delete('quotations/{id}', 'delete');
 
-    // Route::patch('afRequests/{id}', 'update');
-    // Route::delete('afRequests/{id}', 'delete');
+    //for attachhing and detaching jobs to quotation
+    Route::patch('quotations/attach/{jobId}', 'attachJob');
+    Route::patch('quotations/detach/{jobId}', 'detachJob');
+
 });
 
 
