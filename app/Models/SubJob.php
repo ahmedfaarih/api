@@ -11,6 +11,6 @@ class SubJob extends Model
     protected $guarded = [];
 
     public function jobs(){
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(Job::class, 'job_id');
     }
 }

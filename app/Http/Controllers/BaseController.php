@@ -7,11 +7,19 @@ use Spatie\QueryBuilder\QueryBuilder;
 class BaseController extends Controller
 {
     protected $model;
+    protected $allowedIncludes;    
+    protected $allowedFilters;    
+    protected $allowedSorts;    
+    protected $relation;    
     
     //pass model through controller
     public function index()
     {
         $data =  QueryBuilder::for($this->model)
+        ->with($this->relation)
+        ->allowedFilters($this->allowedFilters)
+        ->allowedIncludes($this->allowedIncludes)
+        ->allowedSorts($this->allowedIncludes)
         ->simplePaginate(10);
         return $data;
     }

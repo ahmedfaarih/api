@@ -10,13 +10,10 @@ class JobController extends BaseController
     public function __construct()
     {
         $this->model = Job::class;
-    }
-
-    public function index(){
-        $jobs = QueryBuilder::for(Job::class)
-        ->with('subJobs')
-        ->simplePaginate(10);
-        return $jobs;
+        $this->relation=['subJobs'];
+        $this->allowedFilters=['name'];
+        $this->allowedIncludes=['subJobs'];
+        $this->allowedSorts=['id'];
     }
 
 }

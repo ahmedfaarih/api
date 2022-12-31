@@ -6,6 +6,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\PortController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\ShipmentController;
+use App\Http\Controllers\SubJobController;
 use App\Http\Controllers\TermController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::apiResource('ports',PortController::class);
 Route::apiResource('shipments',ShipmentController::class);
 Route::apiResource('terms',TermController::class);
 Route::apiResource('jobs',JobController::class);
+Route::apiResource('subJobs',SubJobController::class);
 // Route::apiResource('quotations',QuotationController::class);
 
 Route::controller(AfrequestController::class)->group(function (){
