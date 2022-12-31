@@ -12,7 +12,12 @@ class Job extends Model
 
     public function quotation()
     {
-        return $this->belongsTo(Quotation::class);
+        return $this->belongsToMany(Quotation::class, 'quotation_jobs','job_id','quotation_id')->withTimestamps();
+    }
+    // return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+
+    public function subJobs(){
+        return$this->hasMany(SubJob::class);
     }
     
     private function rules()

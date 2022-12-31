@@ -15,20 +15,16 @@ return new class extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
             $table->unsignedBigInteger('af_request_id');
             $table->foreign('af_request_id')->references('id')->on('afrequests');
-            $table->unsignedBigInteger('job_id');
-            $table->foreign('job_id')->references('id')->on('jobs');
-            $table->string('status');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('consignee_id');
-            $table->foreign('consignee_id')->references('id')->on('consignments');
-            $table->string('quotation_number');
-            $table->float('sub_total');
-            $table->float('discount_rate');
-            $table->float('gst');
-            $table->float('net_total');
+            $table->string('quotation_number')->nullable();
+            $table->float('sub_total')->nullable();
+            $table->float('discount_rate')->nullable();
+            $table->float('gst')->nullable();
+            $table->float('net_total')->nullable();
             $table->timestamps();
         });
     }

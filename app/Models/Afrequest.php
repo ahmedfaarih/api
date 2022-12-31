@@ -17,7 +17,13 @@ class Afrequest extends Model
         return $this->belongsTo(Consignment::class, 'consignee_id');
     }
 
-    public function port()
+    
+    public function portOfLanding()
+    {
+        return $this->belongsTo(Port::class, 'port_id_ld');
+    }
+
+    public function portOfDischarge()
     {
         return $this->belongsTo(Port::class, 'port_id_dc');
     }

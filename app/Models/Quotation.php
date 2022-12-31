@@ -17,6 +17,20 @@ class Quotation extends Model
 
     public function jobs()
     {
-        return $this->hasMany(Job::class);
+        return $this->belongsToMany(Job::class,'quotation_jobs', 'quotation_id','job_id' )->withTimestamps();; 
+        // return $this->belongsToMany(Quotation::class, 'quotation_jobs','job_id','quotation_id');
+
+    }
+
+    public function calculateNetTotal($quotation){
+        //quote 
+        $quotation->net_total=
+        $quotation->sub_total+($quotation->sub_total * $quotation->gst/100);
+        $quotation->save();
+        // dd($quotation->net_total);
+        $quotation->refresh();
+        $quotation->net_total=
+        $quotation->net_total-($quotation->sub_total * $quotation->discount_rate/100);
+        $quotation->save();
     }
 }

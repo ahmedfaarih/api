@@ -30,7 +30,7 @@ Route::apiResource('ports',PortController::class);
 Route::apiResource('shipments',ShipmentController::class);
 Route::apiResource('terms',TermController::class);
 Route::apiResource('jobs',JobController::class);
-Route::apiResource('quotations',QuotationController::class);
+// Route::apiResource('quotations',QuotationController::class);
 
 Route::controller(AfrequestController::class)->group(function (){
     Route::get('afRequests', 'index');
@@ -38,6 +38,16 @@ Route::controller(AfrequestController::class)->group(function (){
     Route::post('afRequests', 'store');
     Route::patch('afRequests/{id}', 'update');
     Route::delete('afRequests/{id}', 'delete');
+});
+Route::controller(QuotationController::class)->group(function (){
+    Route::get('quotations', 'index');
+    Route::get('quotations/{id}', 'show');
+    Route::post('quotations', 'store');
+    Route::patch('quotations/attach/{jobId}', 'attachJob');
+    // Route::patch('quotations/detach/{jobId}', 'detachJob');
+
+    // Route::patch('afRequests/{id}', 'update');
+    // Route::delete('afRequests/{id}', 'delete');
 });
 
 
