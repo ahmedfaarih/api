@@ -11,7 +11,7 @@ class SubJobController extends BaseController
     {
         $this->model = SubJob::class;
         $this->relation=['jobs'];
-        $this->allowedFilters=['name'];
+        $this->allowedFilters=['name','price'];
         $this->allowedIncludes=['jobs'];
         $this->allowedSorts=['id'];
     }

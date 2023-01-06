@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             JobSeeder::class,
             QuotationJobSeeder::class,
             SubJobSeeder::class,
+            SubJobJobSeeder::class,
         ]);
     }
 }

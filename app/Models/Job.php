@@ -14,10 +14,10 @@ class Job extends Model
     {
         return $this->belongsToMany(Quotation::class, 'quotation_jobs','job_id','quotation_id')->withTimestamps();
     }
-    // return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
 
-    public function subJobs(){
-        return$this->hasMany(SubJob::class);
+    public function subJobs()
+    {
+        return $this->belongsToMany(SubJob::class, 'sub_job_jobs','job_id','sub_job_id')->withTimestamps();
     }
     
     private function rules()

@@ -23,6 +23,7 @@ class JobFactory extends Factory
             'name' => fake()->name(),
             'status' => fake()->name($status),
             'priority' => fake()->name(),
+            'file_path' => fake()->name(),
             'price' => $this-> faker->randomFloat(2, 0, 10000),
         ];
     }
