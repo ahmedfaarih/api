@@ -3,12 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Job;
+use App\Models\SubJob;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SubJob>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SubJobJob>
  */
-class SubJobFactory extends Factory
+class SubJobJobFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +19,8 @@ class SubJobFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'file_path' => fake()->name(),
-            'price' => $this-> faker->randomFloat(2, 0, 10000),
+            'job_id' => $this->faker->randomElement(Job::pluck('id')),
+            'sub_job_id' => $this->faker->randomElement(SubJob::pluck('id')),
         ];
     }
 }

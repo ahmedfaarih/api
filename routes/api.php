@@ -30,7 +30,6 @@ Route::apiResource('consignments',ConsignmentController::class);
 Route::apiResource('ports',PortController::class);
 Route::apiResource('shipments',ShipmentController::class);
 Route::apiResource('terms',TermController::class);
-Route::apiResource('jobs',JobController::class);
 Route::apiResource('subJobs',SubJobController::class);
 // Route::apiResource('quotations',QuotationController::class);
 
@@ -54,6 +53,20 @@ Route::controller(QuotationController::class)->group(function (){
     Route::patch('quotations/detach/{jobId}', 'detachJob');
 
 });
+
+Route::controller(JobController::class)->group(function (){
+    Route::get('jobs', 'index');
+    Route::get('jobs/{job}', 'show');
+    Route::post('jobs', 'store');
+    Route::patch('jobs/{job}', 'update');
+    Route::delete('jobs/{job}', 'delete');
+
+    //for attachhing and detaching subjobs to jobs
+    Route::patch('jobs/attach/{subJobId}', 'attachJob');
+    Route::patch('jobs/detach/{subJobId}', 'detachJob');
+
+});
+
 
 
 

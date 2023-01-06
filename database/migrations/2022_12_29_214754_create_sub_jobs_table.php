@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('sub_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('job_id')->nullable();
-            $table->foreign('job_id')->references('id')->on('jobs');
+            $table->string('file_path')->nullable();
+            $table->float('price')->nullable();
             $table->timestamps();
         });
     }
